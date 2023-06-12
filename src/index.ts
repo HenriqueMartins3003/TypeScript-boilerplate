@@ -1,9 +1,12 @@
-import Tree from '@/one/two/three/Tree';
+import express from 'express';
+import { Request, Response } from 'express';
+import Person from '@/Person';
+const app = express();
 
-class Person {
-  sayMyName() {
-    return 'Henrique';
-  }
-}
-console.log(new Tree().log());
-export default Person;
+app.get('/', (req: Request, res: Response) => {
+  res.send(new Person().sayHello());
+});
+
+app.listen(3030, () => {
+  console.log('listening on Port 3030');
+});
